@@ -8,3 +8,8 @@ spring:
   h2:
     console:
       enabled: true
+
+  server:
+    servlet:
+      encoding:
+        force-response: true
