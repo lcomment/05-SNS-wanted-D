@@ -1,4 +1,4 @@
-package com.wanted.sns.domain.posts.dao;
+package com.wanted.sns.domain.posts;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -14,11 +14,11 @@ public class Posts {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 500, nullable = false)
+    @Column(length=500, nullable = false)
     private String title;
 
     @Column(columnDefinition = "TEXT", nullable = false)
-    private String content;
+    private  String content;
 
     private String author;
 
