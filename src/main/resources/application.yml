@@ -1,0 +1,10 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        #format_sql: true
+  # h2 콘솔 적용
+  h2:
+    console:
+      enabled: true

@@ -1,6 +1,9 @@
 package com.wanted.sns.service.posts;
 
-import com.wanted.sns.domain.dto.PostsSaveRequestDto;
+import com.wanted.sns.controller.dto.PostsResponseDto;
+import com.wanted.sns.controller.dto.PostsSaveRequestDto;
+import com.wanted.sns.controller.dto.PostsUpdateRequestDto;
+import com.wanted.sns.domain.posts.Posts;
 import com.wanted.sns.domain.posts.PostsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,5 +17,21 @@ public class PostsService {
     @Transactional
     public Long save(PostsSaveRequestDto requestDto){
         return postsRepository.save(requestDto.toEntity()).getId();
+    }
+
+    @Transactional
+    public Long update(Long id, PostsUpdateRequestDto requestDto){
+        Posts posts = postsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시물이 존재하지 않습니다. id=" + id));
+
+        posts.update(requestDto.getTitle(), requestDto.getContent());
+        return id;
+    }
+
+    public PostsResponseDto findById(Long id){
+        Posts post = postsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시물이 존재하지 않습니다. id=" + id));
+
+        return new PostsResponseDto(post);
     }
 }

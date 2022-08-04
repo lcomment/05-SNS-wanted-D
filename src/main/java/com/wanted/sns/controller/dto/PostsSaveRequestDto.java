@@ -1,4 +1,4 @@
-package com.wanted.sns.domain.dto;
+package com.wanted.sns.controller.dto;
 
 import com.wanted.sns.domain.posts.Posts;
 import lombok.Builder;
